@@ -98,10 +98,10 @@
         /* if there is active product and it's not thisProduct.element, remove class active from it */
 
         if (productActive !== thisProduct.element && productActive !== null) {
-          productActive.classList.remove('active');
+          productActive.classList.remove(classNames.menuProduct.wrapperActive);
         }
         /* toggle active class on thisProduct.element */
-        thisProduct.element.classList.toggle('active');
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
       });
     }
   }
