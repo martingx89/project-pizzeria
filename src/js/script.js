@@ -164,8 +164,10 @@
           const option = param.options[optionId];
           // console.log(optionId, option);
 
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
           // check if there is param with a name of paramId in formData and if it includes optionId
-          if (formData[paramId] && formData[paramId].includes(optionId)) {
+          if (optionSelected) {
             // check if the option is not default
             if (option.default) {
               // add option price to price variable
@@ -183,7 +185,7 @@
 
           const optionImage = thisProduct.imageWrapper.querySelector(`.${paramId}-${optionId}`);
           if (optionImage) {
-            if (formData[paramId] && formData[paramId].includes(optionId)) {
+            if (optionSelected) {
               optionImage.classList.add(classNames.menuProduct.imageVisible);
             } else {
               optionImage.classList.remove(classNames.menuProduct.imageVisible);
