@@ -62,6 +62,8 @@
       thisProduct.renderInMenu();
       thisProduct.getElements();
       thisProduct.initAccordion();
+      thisProduct.initOrderForm();
+      thisProduct.processOrder();
       // console.log('newProduct', thisProduct);
     }
 
@@ -98,6 +100,8 @@
 
       /* START: add event listener to clickable trigger on event click */
 
+      // console.log(thisProduct.cartButton);
+
       thisProduct.accordionTrigger.addEventListener('click', function (event) {
         /* prevent default action for event */
 
@@ -115,6 +119,15 @@
         /* toggle active class on thisProduct.element */
         thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
       });
+    }
+
+    initOrderForm() {
+      const thisProduct = this;
+      console.log('we are in initOrderForm', thisProduct);
+    }
+    processOrder() {
+      const thisProduct = this;
+      console.log('we are in processOrder', thisProduct);
     }
   }
 
