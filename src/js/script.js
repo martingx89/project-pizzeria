@@ -168,14 +168,14 @@
             if (option.default) {
               // add option price to price variable
               // console.log('++');
-              price++;
+              price += option.price;
             }
           } else {
             // check if the option is default
             if (!option.default) {
               // console.log('--');
               // reduce price variable
-              price--;
+              price -= option.price;
             }
           }
         }
