@@ -123,11 +123,28 @@
 
     initOrderForm() {
       const thisProduct = this;
-      console.log('we are in initOrderForm', thisProduct);
+      console.log('we are in initOrderForm');
+      thisProduct.form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
+
+      for (let input of thisProduct.formInputs) {
+        input.addEventListener('change', function () {
+          thisProduct.processOrder();
+        });
+      }
+
+      thisProduct.cartButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
     }
     processOrder() {
       const thisProduct = this;
-      console.log('we are in processOrder', thisProduct);
+      // console.log('we are in processOrder');
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      console.log('formData', formData);
     }
   }
 
