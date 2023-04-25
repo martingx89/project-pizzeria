@@ -43,8 +43,8 @@
   const settings = {
     amountWidget: {
       defaultValue: 1,
-      defaultMin: 1,
-      defaultMax: 9,
+      defaultMin: 0,
+      defaultMax: 10,
     },
   };
 
@@ -225,9 +225,13 @@
 
       /* TODO: Add validation */
 
-      if (thisWidget.value !== newValue && !isNaN(newValue)) {
+      if (
+        thisWidget.value !== newValue &&
+        !isNaN(newValue) &&
+        newValue >= settings.amountWidget.defaultMin &&
+        newValue <= settings.amountWidget.defaultMax
+      ) {
         thisWidget.value = newValue;
-        console.log('OK: ' + newValue);
       }
       thisWidget.input.value = thisWidget.value;
     }
@@ -240,13 +244,17 @@
 
       thisWidget.linkDecrease.addEventListener('click', function (event) {
         event.preventDefault();
-        thisWidget.value -= 1;
-        thisWidget.setValue(thisWidget.value);
+        if (thisWidget.value > settings.amountWidget.defaultMin) {
+          thisWidget.value -= 1;
+          thisWidget.setValue(thisWidget.value);
+        }
       });
       thisWidget.linkIncrease.addEventListener('click', function (event) {
         event.preventDefault();
-        thisWidget.value += 1;
-        thisWidget.setValue(thisWidget.value);
+        if (thisWidget.value < settings.amountWidget.defaultMax) {
+          thisWidget.value += 1;
+          thisWidget.setValue(thisWidget.value);
+        }
       });
     }
   }
