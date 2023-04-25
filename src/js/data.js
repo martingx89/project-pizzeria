@@ -86,13 +86,13 @@ dataSource.products = {
     description: 'A delicious salad made of fresh, home-grown products on a crispy lettuce base.',
     images: [
       '<img class="active" src="images/salad/plate.svg">',
-      '<img class="active ingredients-cucumber" src="images/salad/cucumber.svg" style="z-index: 1;">',
-      '<img class="active ingredients-tomatoes" src="images/salad/tomatoes.svg" style="z-index: 2;">',
-      '<img class="active ingredients-olives" src="images/salad/salad-olives.svg" style="z-index: 3;">',
-      '<img class="active ingredients-feta" src="images/salad/feta.svg" style="z-index: 4;">',
-      '<img class="active ingredients-herbs" src="images/salad/herbs.svg" style="z-index: 5;">',
-      '<img class="active ingredients-cheese" src="images/salad/cheese.svg" style="z-index: 6;">',
-      '<img class="active ingredients-pepper" src="images/salad/black-pepper.svg" style="z-index: 7;">',
+      '<img class="ingredients-cucumber" src="images/salad/cucumber.svg" style="z-index: 1;">',
+      '<img class="ingredients-tomatoes" src="images/salad/tomatoes.svg" style="z-index: 2;">',
+      '<img class="ingredients-olives" src="images/salad/salad-olives.svg" style="z-index: 3;">',
+      '<img class="ingredients-feta" src="images/salad/feta.svg" style="z-index: 4;">',
+      '<img class="ingredients-herbs" src="images/salad/herbs.svg" style="z-index: 5;">',
+      '<img class="ingredients-cheese" src="images/salad/cheese.svg" style="z-index: 6;">',
+      '<img class="ingredients-pepper" src="images/salad/black-pepper.svg" style="z-index: 7;">',
     ],
     params: {
       ingredients: {
