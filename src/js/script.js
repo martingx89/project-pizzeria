@@ -221,16 +221,14 @@
     }
     setValue(value) {
       const thisWidget = this;
-
       const newValue = parseInt(value);
 
       /* TODO: Add validation */
 
       if (thisWidget.value !== newValue && !isNaN(newValue)) {
         thisWidget.value = newValue;
+        console.log('OK: ' + newValue);
       }
-
-      thisWidget.value = newValue;
       thisWidget.input.value = thisWidget.value;
     }
     initActions() {
