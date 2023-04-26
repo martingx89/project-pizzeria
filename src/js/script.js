@@ -258,10 +258,40 @@
         amount: thisProduct.amountWidget.value,
         priceSingle: thisProduct.priceSingle,
         price: thisProduct.price,
-        params: '',
+        params: thisProduct.prepareCartProductParams(),
       };
 
       return productSummary;
+    }
+    prepareCartProductParams() {
+      const thisProduct = this;
+
+      const formData = utils.serializeFormToObject(thisProduct.dom.form);
+      const params = {};
+
+      // for very category (param)
+      for (let paramId in thisProduct.data.params) {
+        const param = thisProduct.data.params[paramId];
+
+        // create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}
+        params[paramId] = {
+          label: param.label,
+          options: {},
+        };
+
+        // for every option in this category
+        for (let optionId in param.options) {
+          const option = param.options[optionId];
+          // console.log(option);
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
+          if (optionSelected) {
+            params[paramId].options[optionId] = option.label;
+          }
+        }
+      }
+
+      return params;
     }
   }
 
@@ -350,6 +380,7 @@
 
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
     }
     initActions() {
       const thisCart = this;
@@ -358,9 +389,17 @@
       });
     }
     add(menuProduct) {
-      // const thisCart =this;
+      const thisCart = this;
 
       console.log('adding product: ', menuProduct);
+
+      /* generate HTML based on template */
+      const generateHTML = templates.cartProduct(menuProduct);
+      // console.log(generateHTML);
+      /* create element using utils.createElementFromHTML */
+      const generatedDOM = utils.createDOMFromHTML(generateHTML);
+      /* add element to menu */
+      thisCart.dom.productList.appendChild(generatedDOM);
     }
   }
 
