@@ -238,13 +238,26 @@
       }
 
       // update calculated price in the HTML
+      thisProduct.priceSingle = price;
       price *= thisProduct.dom.AmountWidget.value;
+      console.log('price single: ', thisProduct.priceSingle);
       thisProduct.dom.priceElem.innerHTML = price;
     }
     addToCart() {
       const thisProduct = this;
 
       app.cart.add(thisProduct);
+    }
+    prepareCartProduct() {
+      const thisProduct = this;
+
+      const productSummary = {
+        id: thisProduct.id,
+        name: thisProduct.name,
+        amount: thisProduct.amount,
+        priceSingle: thisProduct.priceSingle,
+        price: thisProduct.price,
+      };
     }
   }
 
