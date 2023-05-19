@@ -10,6 +10,7 @@ class Booking {
 
     thisBooking.render(element);
     thisBooking.initWidgets();
+    thisBooking.selectedTable;
     thisBooking.getData();
   }
 
@@ -143,6 +144,8 @@ class Booking {
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+
+    thisBooking.dom.tablesContainer = thisBooking.dom.wrapper.querySelector(select.booking.allTables);
   }
 
   initWidgets() {
@@ -163,6 +166,36 @@ class Booking {
     thisBooking.dom.wrapper.addEventListener('updated', function () {
       thisBooking.updateDOM();
     });
+    thisBooking.dom.tablesContainer.addEventListener('click', function (event) {
+      thisBooking.initTables(event);
+    });
+  }
+
+  initTables(event) {
+    // console.log('test click');
+    const thisBooking = this;
+    event.preventDefault();
+
+    const clickedElement = event.target;
+    // console.log(clickedElement);
+
+    let tableId = clickedElement.getAttribute('data-table');
+    // console.log(tableId);
+    if (tableId) {
+      if (clickedElement.classList.contains(classNames.booking.tableBooked)) {
+        alert('The table is not unavailable, it is reserved!');
+      } else {
+        if (clickedElement.classList.contains(classNames.booking.tableSelected)) {
+          clickedElement.classList.remove(classNames.booking.tableSelected);
+        } else {
+          for (let table of thisBooking.dom.tables) {
+            table.classList.remove(classNames.booking.tableSelected);
+          }
+          clickedElement.classList.add(classNames.booking.tableSelected);
+          thisBooking.selectedTable = tableId;
+        }
+      }
+    }
   }
 }
 
