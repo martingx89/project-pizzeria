@@ -249,6 +249,8 @@ class Booking {
         return response.json();
       })
       .then(function (parsedResponse) {
+        thisBooking.makeBooked(booking.date, booking.hour, booking.duration, booking.table);
+        alert('The table is reserved for you!');
         console.log('parsedResponse', parsedResponse);
       });
   }
