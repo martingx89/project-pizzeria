@@ -146,6 +146,7 @@ class Booking {
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
 
     thisBooking.dom.tablesContainer = thisBooking.dom.wrapper.querySelector(select.booking.allTables);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
 
     thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.address);
     thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
@@ -226,27 +227,30 @@ class Booking {
       phone: thisBooking.dom.phone.value,
       address: thisBooking.dom.address.value,
     };
-    console.log('url', url);
-    console.log('booke', booking);
 
-    // payload.products.push(prod.getData());
+    for (let starter of thisBooking.dom.starters) {
+      if (starter.checked) {
+        booking.starters.push(starter.value);
+      }
+    }
 
-    // // console.log('payload', payload);
-    // const options = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(payload),
-    // };
+    // console.log('url', url);
+    // console.log('booke', booking);
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(booking),
+    };
 
-    // fetch(url, options)
-    //   .then(function (response) {
-    //     return response.json();
-    //   })
-    //   .then(function (parsedResponse) {
-    //     console.log('parsedResponse', parsedResponse);
-    //   });
+    fetch(url, options)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (parsedResponse) {
+        console.log('parsedResponse', parsedResponse);
+      });
   }
 }
 
