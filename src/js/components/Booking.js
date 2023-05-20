@@ -152,18 +152,21 @@ class Booking {
     const thisBooking = this;
 
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
-    thisBooking.dom.peopleAmount.addEventListener('click', function () {});
+    thisBooking.dom.peopleAmount.addEventListener('updated', function () {});
 
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
-    thisBooking.dom.hoursAmount.addEventListener('click', function () {});
+    thisBooking.dom.hoursAmount.addEventListener('updated', function () {});
 
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
-    thisBooking.dom.datePicker.addEventListener('click', function () {});
+    thisBooking.dom.datePicker.addEventListener('updated', function () {});
 
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
-    thisBooking.dom.hourPicker.addEventListener('click', function () {});
+    thisBooking.dom.hourPicker.addEventListener('updated', function () {});
 
     thisBooking.dom.wrapper.addEventListener('updated', function () {
+      for (let table of thisBooking.dom.tables) {
+        table.classList.remove(classNames.booking.tableSelected);
+      }
       thisBooking.updateDOM();
     });
     thisBooking.dom.tablesContainer.addEventListener('click', function (event) {
@@ -193,6 +196,7 @@ class Booking {
           }
           clickedElement.classList.add(classNames.booking.tableSelected);
           thisBooking.selectedTable = tableId;
+          // console.log(thisBooking.selectedTable);
         }
       }
     }
