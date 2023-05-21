@@ -1,110 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Pizzeria</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
+      rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <link rel="stylesheet" href="vendor/range-slider.min.css" />
+    <link rel="stylesheet" href="vendor/flickity.css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Pizzeria</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
-    rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="vendor/range-slider.min.css">
-  <link rel="stylesheet" href="vendor/flickity.css" media="screen">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-  <header class="header">
-    <div class="container">
-      <div class="header__wrapper">
-        <div class="logo">
-          <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
-          <h2 class="logo__subtitle">the best homemade Italian food</h2>
-        </div>
-        <div class="main-nav">
-          <a href="#home">Home</a>
-          <a href="#order">Order</a>
-          <a href="#booking">Booking</a>
-        </div>
-        <div id="cart" class="cart">
-          <div class="cart__summary">
-            <span class="cart__total-number">0</span>
-            <span class="cart__total-price">Total price: $<strong>0</strong></span>
-            <i class="fas fa-chevron-down"></i>
-            <i class="fas fa-shopping-cart cart__icon"></i>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__wrapper">
+          <div class="logo">
+            <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
+            <h2 class="logo__subtitle">the best homemade Italian food</h2>
           </div>
-          <div class="cart__content">
-            <form class="cart__order">
-              <ul class="cart__order-summary no-spacing"></ul>
-              <ul class="cart__order-price">
-                <li class="cart__order-subtotal">
-                  <span class="cart__order-price-name">Subtotal:</span>
-                  <span class="cart__order-price-sum">$<strong>0</strong></span>
-                </li>
-                <li class="cart__order-delivery">
-                  <span class="cart__order-price-name">Delivery:</span>
-                  <span class="cart__order-price-sum">$<strong>0</strong></span>
-                </li>
-                <li class="cart__order-total">
-                  <span class="cart__order-price-name"><strong>Total:</strong></span>
-                  <span class="cart__order-price-sum">$<strong>0</strong></span>
-                </li>
-              </ul>
-              <div class="cart__order-confirmation">
-                <input type="tel" name="phone" placeholder="Your phone" />
-                <input type="text" name="address" placeholder="Your address" />
-                <button type="submit" class="btn-secondary">Order</button>
+          <div class="main-nav">
+            <a href="#home">Home</a>
+            <a href="#order">Order</a>
+            <a href="#booking">Booking</a>
+          </div>
+          <div id="cart" class="cart">
+            <div class="cart__summary">
+              <span class="cart__total-number">0</span>
+              <span class="cart__total-price">Total price: $<strong>0</strong></span>
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-shopping-cart cart__icon"></i>
+            </div>
+            <div class="cart__content">
+              <form class="cart__order">
+                <ul class="cart__order-summary no-spacing"></ul>
+                <ul class="cart__order-price">
+                  <li class="cart__order-subtotal">
+                    <span class="cart__order-price-name">Subtotal:</span>
+                    <span class="cart__order-price-sum">$<strong>0</strong></span>
+                  </li>
+                  <li class="cart__order-delivery">
+                    <span class="cart__order-price-name">Delivery:</span>
+                    <span class="cart__order-price-sum">$<strong>0</strong></span>
+                  </li>
+                  <li class="cart__order-total">
+                    <span class="cart__order-price-name"><strong>Total:</strong></span>
+                    <span class="cart__order-price-sum">$<strong>0</strong></span>
+                  </li>
+                </ul>
+                <div class="cart__order-confirmation">
+                  <input type="tel" name="phone" placeholder="Your phone" />
+                  <input type="text" name="address" placeholder="Your address" />
+                  <button type="submit" class="btn-secondary">Order</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="pages">
+      <section id="home">
+        <div class="home-wrapper container"></div>
+      </section>
+      <section id="order">
+        <div id="product-list" class="product-list container"></div>
+      </section>
+      <section id="booking">
+        <div class="booking-wrapper container"></div>
+      </section>
+    </div>
+
+    <script id="template-home" type="text/x-handlebars-template">
+      <div class='home-header'>
+        <div class='row-wrapper'>
+          <a href='#order' class='home-btn'>
+            <div class='box'>
+              <img src='images/homePage/pizza-1.jpg' alt='' />
+              <div class='order-book'>
+                <h3>order online</h3>
+                <p>Delicious food delivered to your door</p>
               </div>
-            </form>
+            </div>
+          </a>
+          <a href='#booking' class='home-btn'>
+            <div class='box'>
+              <img src='images/homePage/pizza-2.jpg' alt='' />
+              <div class='order-book'>
+                <h3>book a table</h3>
+                <p>Enjoy your time in our restaurant</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class='bottom-box'>
+          <h3>opening hours:</h3>
+          <h4 class='open-time'>tue-sun, 12 pm - 12 am</h4>
+        </div>
+      </div>
+
+      <!-- Carousel -->
+      <div class='carousel-wrapper' data-flickity='{ "autoPlay": true }'>
+        <div class='carousel-box'>
+          <div class='carousel-box__image'>
+            <img src='images/homePage/pizza-3.jpg' alt='people eating' />
+          </div>
+          <div class='carousel-box__info'>
+            <h1>Title 1</h1>
+            <p>Description</p>
+            <p>Nick Name</p>
+          </div>
+        </div>
+        <div class='carousel-box'>
+          <div class='carousel-box__image'>
+            <img src='images/homePage/pizza-3.jpg' alt='people eating' />
+          </div>
+          <div class='carousel-box__info'>
+            <h1>Title 1</h1>
+            <p>Description</p>
+            <p>Nick Name</p>
+          </div>
+        </div>
+        <div class='carousel-box'>
+          <div class='carousel-box__image'>
+            <img src='images/homePage/pizza-3.jpg' alt='people eating' />
+          </div>
+          <div class='carousel-box__info'>
+            <h1>Title 1</h1>
+            <p>Description</p>
+            <p>Nick Name</p>
           </div>
         </div>
       </div>
-    </div>
-  </header>
+    </script>
 
-  <div id="pages">
-    <section id="home">
-      <div class="home-wrapper container"></div>
-    </section>
-    <section id="order">
-      <div id="product-list" class="product-list container"></div>
-    </section>
-    <section id="booking">
-      <div class="booking-wrapper container"></div>
-    </section>
-  </div>
-
-  <script id="template-home" type="text/x-handlebars-template">
-    <div class="main">
-      <div class="main__links">
-        <a href="#order" class="btn-link">
-          <div class="btn-link__wrapper">
-            <p class="main__title">order online</p>
-            <img src="images/homePage/pizza-1.jpg" alt="black and white pizza">
-          </div>
-        </a>
-        <a href="#booking" class="btn-link">
-          <div class="btn-link__wrapper">
-            <p class="main__title">book a table</p>
-            <img src="images/homePage/pizza-2.jpg" alt="top view of restaurant table with foods">
-          </div>
-        </a>
-      </div>
-      <div class="main__info">
-        <p class="main__title">opening hours:</p>
-        <p class="main__subtitle">tue-sun, 12pm - 12 am</p>
-      </div>
-      <div class="main-carousel">
-        <div class="carousel-cell">...</div>
-        <div class="carousel-cell">...</div>
-        <div class="carousel-cell">...</div>
-      </div>
-    </div>
-  </script>
-
-  <script id="template-cart-product" type="text/x-handlebars-template">
+    <script id="template-cart-product" type="text/x-handlebars-template">
       <li>
         <div class='widget-amount'>
           <!-- widget-amount -->
@@ -133,7 +168,7 @@
       </li>
     </script>
 
-  <script id="template-menu-product" type="text/x-handlebars-template">
+    <script id="template-menu-product" type="text/x-handlebars-template">
       <article class="product"> <!-- product -->
 
           <header class="product__header">
@@ -212,7 +247,7 @@
       </article> <!-- .product -->
     </script>
 
-  <script id="template-booking-widget" type="text/x-handlebars-template">
+    <script id="template-booking-widget" type="text/x-handlebars-template">
       <div class='booking-widget'>
         <h2 class='page__title no-spacing'>Book a table</h2>
         <form class='booking-form'>
@@ -286,11 +321,10 @@
       </div>
     </script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="vendor/range-slider.min.js"></script>
-  <script src="vendor/flickity.pkgd.min.js"></script>
-  <script src="js/app.js" type="module"></script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="vendor/range-slider.min.js"></script>
+    <script src="vendor/flickity.pkgd.min.js"></script>
+    <script src="js/app.js" type="module"></script>
+  </body>
 </html>
