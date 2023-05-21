@@ -64,7 +64,9 @@
   </header>
 
   <div id="pages">
-    <section id="home"></section>
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -72,6 +74,27 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+
+  <script id="template-home" type="text/x-handlebars-template">
+    <div class="main">
+      <li class="main_links">
+        <a href="#order" class="btn-link">
+          <div>
+            <p>order online</p>
+            <img src="" alt="">
+          </div>
+        </a>
+      </li>
+      <li class="main_links">
+        <a href="#booking" class="btn-link">
+          <div>
+            <p>book a table</p>
+            <img src="" alt="">
+          </div>
+        </a>
+      </li>
+    </div>
+  </script>
 
   <script id="template-cart-product" type="text/x-handlebars-template">
       <li>
