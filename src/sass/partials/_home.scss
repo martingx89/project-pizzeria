@@ -1,0 +1,36 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 10px;
+  margin: 70px 0;
+  font-family: $font-header;
+  font-weight: $font-normal;
+  letter-spacing: 0.5px;
+  font-size: ($base-size * 2);
+  text-transform: uppercase;
+  color: $color-light;
+
+  &__links {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    background-color: $color-main;
+    border-radius: $radius;
+  }
+
+  &__info p {
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-weight: $font-light;
+  }
+}
