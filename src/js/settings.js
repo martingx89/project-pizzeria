@@ -54,7 +54,6 @@ export const select = {
   nav: {
     links: '.main-nav a',
   },
-  // CODE ADDED START
   cart: {
     productList: '.cart__order-summary',
     toggleTrigger: '.cart__summary',
@@ -73,7 +72,9 @@ export const select = {
     edit: '[href="#edit"]',
     remove: '[href="#remove"]',
   },
-  // CODE ADDED END
+  home: {
+    links: '.home-btn',
+  },
 };
 
 export const classNames = {
@@ -81,7 +82,6 @@ export const classNames = {
     wrapperActive: 'active',
     imageVisible: 'active',
   },
-  // CODE ADDED START
   cart: {
     wrapperActive: 'active',
   },
@@ -96,7 +96,6 @@ export const classNames = {
   pages: {
     active: 'active',
   },
-  // CODE ADDED END
 };
 
 export const settings = {
@@ -104,8 +103,7 @@ export const settings = {
     defaultValue: 1,
     defaultMin: 1,
     defaultMax: 10,
-  }, // CODE CHANGED
-  // CODE ADDED START
+  },
   cart: {
     defaultDeliveryFee: 20,
   },
@@ -119,7 +117,6 @@ export const settings = {
   booking: {
     tableIdAttribute: 'data-table',
   },
-  // CODE ADDED END
   db: {
     url: '//localhost:3131',
     bookings: 'bookings',
@@ -135,10 +132,7 @@ export const settings = {
 
 export const templates = {
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
-  // CODE ADDED START
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
   homePage: Handlebars.compile(document.querySelector(select.templateOf.homePage).innerHTML),
-
-  // CODE ADDED END
 };

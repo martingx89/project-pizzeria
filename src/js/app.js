@@ -95,6 +95,18 @@ const app = {
     const homeWrapper = document.querySelector(select.containerOf.home);
 
     thisApp.homePage = new Home(homeWrapper);
+
+    thisApp.homeLinks = document.querySelectorAll(select.home.links);
+
+    for (let link of thisApp.homeLinks) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        const hrefLink = link.getAttribute('href').replace('#', '');
+
+        thisApp.activatePage(hrefLink);
+      });
+    }
   },
 
   initCart: function () {
